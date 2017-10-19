@@ -9,7 +9,7 @@ import Student from './Student'
 import Home from './Home'
 import Navbar from './Navbar'
 import Campus from './Campus'
-
+import UpdateCampus from './UpdateCampus'
 
 class Root extends Component {
 
@@ -26,8 +26,9 @@ class Root extends Component {
                     <Route exact path="/" component={Home} />
                     <Route exact path="/campuses" component={CampusList} />
                     <Route exact path="/students" component={StudentList} />
-                    <Route path="/students/:studentId" component={Student} />
-                    <Route path="/campuses/:campusId" component={Campus} />
+                    <Route exact path="/students/:studentId" component={Student} />
+                    <Route exact path="/campuses/:campusId" component={Campus} />
+                    <Route path="/campuses/update/:campusId" component={UpdateCampus} />
                 </Switch>
             </div>
         )

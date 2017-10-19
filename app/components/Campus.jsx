@@ -20,7 +20,7 @@ class Campus extends Component {
         const studentsOnCampus = (students.length) ? students.filter(student => {
             return student.id === Number(this.props.match.params.campusId);
         }) : []; 
-        console.log(studentsOnCampus)
+        
         return (
             <div>
                 <p>{campus && campus.id}</p>

@@ -25,33 +25,33 @@ Use at least sequelize, express, react, and redux when creating this app. You ca
 ### DB Design
 
 - Students
-  * have profile info (e.g. name and email)       COMPLETE
-  * must be assigned to a campus                  
+  * have profile info (e.g. name and email)                                                       COMPLETE
+  * must be assigned to a campus                                                                  COMPLETE                
 
 - Campuses
-  * have info such as a name and image            COMPLETE
-  * can have many students assigned (may have none)  
+  * have info such as a name and image                                                            COMPLETE
+  * can have many students assigned (may have none)                                               COMPLETE
 
 ### Views and Functionality
 #### See Wireframes folder for visual
 
 - Navigation: as a user I...
-  * will land on **Home** by default              COMPLETE
-  * can navigate to **Campuses** from **Home**    COMPLETE
-  * can navigate to **Students** from **Home**    COMPLETE
-  * can navigate to view a **Single Campus** from **Campuses** COMPLETE
-  * can navigate to view a **Single Student** from **Students** COMPLETE
+  * will land on **Home** by default                                                              COMPLETE
+  * can navigate to **Campuses** from **Home**                                                    COMPLETE
+  * can navigate to **Students** from **Home**                                                    COMPLETE
+  * can navigate to view a **Single Campus** from **Campuses**                                    COMPLETE
+  * can navigate to view a **Single Student** from **Students**                                   COMPLETE
   * can navigate to view a **Single Student** from **Single Campus** (for any student at that campus) COMPLETE
-  * can navigate to view that student's **Single Campus** from **Single Student** COMPLETE
+  * can navigate to view that student's **Single Campus** from **Single Student**                 COMPLETE
 
 - Views: as a user I...
-  * see a list of all campuses on the **Campuses** view       COMPLETE
-  * see a list of all students on the **Students** view       COMPLETE
-  * see details about a campus on the **Single Campus** view, including that campus's students COMPLETE
-  * see details about a student on the **Single Student** view, including that student's campus COMPLETE
+  * see a list of all campuses on the **Campuses** view                                           COMPLETE
+  * see a list of all students on the **Students** view                                           COMPLETE
+  * see details about a campus on the **Single Campus** view, including that campus's students    COMPLETE
+  * see details about a student on the **Single Student** view, including that student's campus   COMPLETE
 
 - Actions: as a user I...
-  * can create a campus
+  * can create a campus                                                                           COMPLETE
   * can edit a campus's info, including adding/removing a student to/from that campus
   * can delete a campus
   * can create a student

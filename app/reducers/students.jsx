@@ -8,11 +8,7 @@ export function getStudents(students) {
     return { type: GET_STUDENTS, students };
 }
 
-export function getSingleStudent(student) {
-    return {type: GET_SINGLE_STUDENT, student}
-}
 // thunk creator
-
 export function fetchStudents() {
     return function thunk(dispatch) {
         return axios.get('/api/students')
@@ -22,18 +18,6 @@ export function fetchStudents() {
                 dispatch(action);
             })
             .catch((err) => console.log(err))
-    }
-}
-
-export function fetchSingleStudent(studentId) {
-    return function thunk(dispatch) {
-        return axios.get(`/api/students/${studentId}`)
-            .then(res => res.data)
-            .then(student => {
-                const action = getSingleStudent(student); 
-                dispatch(action)
-            })
-            .catch(err => console.log(err))
     }
 }
 

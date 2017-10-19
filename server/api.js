@@ -25,6 +25,31 @@ api.get('/campuses', (req, res, next) => {
         .catch(next);
 });
 
+api.post('/campuses/', (req, res, next) => {
+    console.log("AHAHHAHAHAH", req.body)
+    Campus.findOrCreate({ // first does a findOne, if nothing is found Sequelize does a Campus.create
+        // which means it does a build and save for us. 
+        // if it creates the bool returned will be true
+        where: {
+            name: req.body.newCampus,
+            image: req.body.image
+        }
+    })
+    .spread((campus, bool) => {
+        console.log('hellllo', campus, bool)
+        res.json(campus); 
+        
+        // const newCampus = Campus.build(req.body); 
+        // return newCampus.save()
+        //     .then(campus => {
+        //         campus = campus.toJSON(); 
+        //         return campus; 
+        //     })
+    })
+    
+    .catch(next); 
+})
+
 api.get('/campuses/:campusId', (req, res, next) => {
     Campus.findById(req.params.campusId)
         .then(campus => res.json(campus))
