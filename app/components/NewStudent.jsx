@@ -35,7 +35,7 @@ class NewStudent extends Component {
                             onChange={(e) => this.setState({email: e.target.value})}
                             placeholder="insert email..."
                         />
-                        <button type="submit">Add Campus</button>
+                        <button type="submit">Add Student</button>
                     </div>
                 </form>
             </div>
