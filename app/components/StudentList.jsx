@@ -3,36 +3,50 @@ import { Route, Switch, Redirect, NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import store from '../store'
 import NewStudent from './NewStudent'
+import {deleteSelectedStudent} from '../reducers'
 
-function StudentList(props) {
+class StudentList extends Component {
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this); 
+    }
 
-    const { students } = props;
+    handleClick(id) {
+        this.props.deleteStudent(id)
+    }
 
-    return (
-        <div>
-            <NewStudent />
-            <h1>Student List</h1>
-            <ul>
-                {students.map((student) => 
-                    <li key={student.id}>
-                        {student.id}
-                        <NavLink to={`/students/${student.id}`}>{student.name}</NavLink>
-                        <button>Delete</button>
-                        <NavLink to={`/students/update/${student.id}`}>Update</NavLink>
-                    </li>
-                )}
-            </ul>
-        </div>
-    )
+    render() {
+        const { students } = this.props;
+        return (
+            <div>
+                <NewStudent />
+                <h1>Student List</h1>
+                <ul>
+                    {students.map((student) =>
+                        <li key={student.id}>
+                            {student.id}
+                            <NavLink to={`/students/${student.id}`}>{student.name}</NavLink>
+                            <button onClick={e => this.handleClick(student.id)}>Delete</button>
+                            <NavLink to={`/students/update/${student.id}`}>Update</NavLink>
+                        </li>
+                    )}
+                </ul>
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = (state) => ({
-    students: state.students, 
+    students: state.students,
     campuses: state.campuses
 });
 
 const mapDispatchToProps = function (dispatch) {
-    return {}
+    return {
+        deleteStudent(id) {
+            dispatch(deleteSelectedStudent(id))
+        }
+    }
 };
 
 export default connect(

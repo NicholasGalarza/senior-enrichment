@@ -18,6 +18,10 @@ export function updateStudent(student) {
     return {type: UPDATE_STUDENT, student}; 
 }
 
+export function deleteStudent(student) {
+    return {type: DELETE_STUDENT, student}; 
+}
+
 // thunk creator
 export function fetchStudents() {
     return function thunk(dispatch) {
@@ -55,6 +59,12 @@ export function updateStudentData(id, modifiedStudent) {
     }
 }
 
+export function deleteSelectedStudent(id) {
+    return function thunk(dispatch) {
+        return axios.delete(`/api/students/${id}`); 
+    }
+}
+
 // reducer
 export default function reducer(state = [], action) {
     switch (action.type) {
@@ -68,6 +78,8 @@ export default function reducer(state = [], action) {
         case UPDATE_STUDENT: 
             return [...state, action.student];
 
+        case DELETE_STUDENT: 
+            return [...state]; 
         default:
             return state;
     }
