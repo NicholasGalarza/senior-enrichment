@@ -35,6 +35,10 @@ const mapDispatchToProps = function (dispatch) {
     return {}
 };
 
+const handleClick = function () {
+    
+}
+
 export default connect(
     mapStateToProps,
     mapDispatchToProps

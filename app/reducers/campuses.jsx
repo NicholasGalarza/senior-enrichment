@@ -42,9 +42,10 @@ export function addNewCampus(campusData) {
     }
 }
 
-export function updateCampusData(modifiedCampus) {
+export function updateCampusData(id, modifiedCampus) {
+    console.log('hiiiii', id); 
     return function thunk(dispatch) {
-        return axios.put('/api/campuses/:campusId', modifiedCampus)
+        return axios.put(`/api/campuses/update/${id}`, modifiedCampus)
             .then(res => res.data)
             .then(campus => {
                 const action = updateCampus(campus); 
@@ -53,7 +54,6 @@ export function updateCampusData(modifiedCampus) {
             .catch(err => console.error(err)); 
     }
 }
-
 
 export default function reducer(state = [], action) {
     switch (action.type) {

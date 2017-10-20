@@ -36,18 +36,24 @@ api.post('/campuses/', (req, res, next) => {
         }
     })
     .spread((campus, bool) => {
-        console.log('hellllo', campus, bool)
         res.json(campus); 
-        
-        // const newCampus = Campus.build(req.body); 
-        // return newCampus.save()
-        //     .then(campus => {
-        //         campus = campus.toJSON(); 
-        //         return campus; 
-        //     })
     })
-    
     .catch(next); 
+})
+
+// router.put('/:messageId', function (req, res, next) {
+//     const messageId = req.params.messageId;
+  
+//     Message.findById(messageId)
+//       .then(message => message.update(req.body))
+//       .catch(next);
+//   });
+  
+api.put('/campuses/update/:campusId', (req, res, next) => {
+    const campusId = req.params.campusId
+    Campus.findById(campusId)
+        .then(campus => campus.update(req.body))
+        .catch(next); 
 })
 
 api.get('/campuses/:campusId', (req, res, next) => {

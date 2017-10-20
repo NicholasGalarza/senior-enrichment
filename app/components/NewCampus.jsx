@@ -12,8 +12,8 @@ class NewCampus extends Component {
             name: "",
             image: "",
         }
-
     }
+    
     render() {
         const {addNew, handleChange, handleSubmit} = this.props; 
 

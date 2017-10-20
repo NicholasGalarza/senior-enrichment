@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import store from '../store';
-import {addNewCampus} from '../reducers';
+import {updateCampusData} from '../reducers';
 import { Route, Switch, Redirect, NavLink } from 'react-router-dom'; 
 
 
@@ -10,13 +10,13 @@ class UpdateCampus extends Component {
         super(props)
         this.state = {
             name: "",
-            image: "",
+            image: ""
         }
-
     }
-    render() {
-        const {addNew, handleChange, handleSubmit} = this.props; 
 
+    render() {
+        const { handleChange, handleSubmit} = this.props;
+       
         return (
             <div className="campus-form">
                 <h1>Make Edits to Campus</h1>
@@ -45,16 +45,18 @@ class UpdateCampus extends Component {
 
 const mapStateToProps = function (state) {
     return {
-        newCampus: state.name, 
+        name: state.name, 
         image: state.image
     };
 };
 
 const mapDispatchToProps = function (dispatch, ownProps) {
+   
     return {
-        handleSubmit(newCampus, image, event) {
+        handleSubmit(name, image, event) {
             event.preventDefault(); 
-            dispatch(addNewCampus({newCampus, image})); 
+            const id = ownProps.match.params.campusId; 
+            dispatch(updateCampusData(id, {name, image})); 
         }
     };
 };
