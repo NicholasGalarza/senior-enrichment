@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect, NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import store from '../store'
+import NewStudent from './NewStudent'
 
 function StudentList(props) {
 
@@ -9,15 +10,17 @@ function StudentList(props) {
 
     return (
         <div>
+            <NewStudent />
             <h1>Student List</h1>
             <ul>
-                {students.map((student) => (
+                {students.map((student) => 
                     <li key={student.id}>
                         {student.id}
                         <NavLink to={`/students/${student.id}`}>{student.name}</NavLink>
-                        <button>X</button>
+                        <button>Delete</button>
+                        <NavLink to={`/students/update/${student.id}`}>Update</NavLink>
                     </li>
-                ))}
+                )}
             </ul>
         </div>
     )

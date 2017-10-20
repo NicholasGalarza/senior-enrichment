@@ -3,6 +3,7 @@ import axios from 'axios';
 const GET_CAMPUSES = 'GET_CAMPUSES';
 const ADD_CAMPUS = 'ADD_CAMPUS';
 const UPDATE_CAMPUS = 'UPDATE_CAMPUS'; 
+const DELETE_CAMPUS = 'DELETE_CAMPUS'; 
 
 //  action creator
 export function getCampuses(campuses) {
@@ -15,6 +16,10 @@ export function addCampus(campus) {
 
 export function updateCampus(campus) {
     return {type: UPDATE_CAMPUS, campus}
+}
+
+export function deleteCampus(campus) {
+    return {type: DELETE_CAMPUS, campus}
 }
 
 // thunk creator
@@ -43,7 +48,6 @@ export function addNewCampus(campusData) {
 }
 
 export function updateCampusData(id, modifiedCampus) {
-    console.log('hiiiii', id); 
     return function thunk(dispatch) {
         return axios.put(`/api/campuses/update/${id}`, modifiedCampus)
             .then(res => res.data)
@@ -52,6 +56,12 @@ export function updateCampusData(id, modifiedCampus) {
                 dispatch(action); 
             })
             .catch(err => console.error(err)); 
+    }
+}
+
+export function deleteSelectedCampus(id) {
+    return function thunk(dispatch) {
+        return axios.delete(`/api/campuses/${id}`); 
     }
 }
 
@@ -64,8 +74,10 @@ export default function reducer(state = [], action) {
             return [...state, action.campus]; 
 
         case UPDATE_CAMPUS: 
-            console.log("This must be updated", action); 
             return [...state, action.campus]; 
+
+        case DELETE_CAMPUS: 
+            return [...state]
 
         default:
             return state;

@@ -10,8 +10,7 @@ class Campus extends Component {
     }
 
     render() {
-        const students = this.props.students, 
-              campuses = this.props.campuses;
+        const {students, campuses} = this.props; 
 
         const campus = (campuses.length) ? campuses.filter(campus => {
             return campus.id === Number(this.props.match.params.campusId);
@@ -40,6 +39,10 @@ const mapStateToProps = (state) => ({
     students: state.students,
     campuses: state.campuses
 });
+
+// const mapDispatchToProps = () {
+//     return {}
+// }
 
 export default connect(
     mapStateToProps

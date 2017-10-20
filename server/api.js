@@ -25,11 +25,12 @@ api.get('/campuses', (req, res, next) => {
         .catch(next);
 });
 
+// first does a findOne, if nothing is found Sequelize does a Campus.create
+// which means it does a build and save for us. 
+// if it creates the bool returned will be true
 api.post('/campuses/', (req, res, next) => {
-    console.log("AHAHHAHAHAH", req.body)
-    Campus.findOrCreate({ // first does a findOne, if nothing is found Sequelize does a Campus.create
-        // which means it does a build and save for us. 
-        // if it creates the bool returned will be true
+    console.log(req.body); 
+    Campus.findOrCreate({ 
         where: {
             name: req.body.newCampus,
             image: req.body.image
@@ -40,25 +41,40 @@ api.post('/campuses/', (req, res, next) => {
     })
     .catch(next); 
 })
-
-// router.put('/:messageId', function (req, res, next) {
-//     const messageId = req.params.messageId;
-  
-//     Message.findById(messageId)
-//       .then(message => message.update(req.body))
-//       .catch(next);
-//   });
   
 api.put('/campuses/update/:campusId', (req, res, next) => {
-    const campusId = req.params.campusId
-    Campus.findById(campusId)
+    const id = req.params.campusId; 
+    Campus.findById(id)
         .then(campus => campus.update(req.body))
         .catch(next); 
 })
 
-api.get('/campuses/:campusId', (req, res, next) => {
-    Campus.findById(req.params.campusId)
-        .then(campus => res.json(campus))
+api.delete('/campuses/:campusId', (req, res, next) => {
+    console.log("HIIIIIIII, you are going to delete a db"); 
+    const id = req.params.campusId; 
+    Campus.destroy({ where: {id} })
+        .then(() => res.status(201).end())
+        .catch(next); 
+})
+
+api.post('/students', (req, res, next) => {
+    console.log("Hit route for /students in server", req.body)
+    Student.findOrCreate({ 
+        where: {
+            name: req.body.name,
+            email: req.body.email
+        }
+    })
+    .spread((student, bool) => {
+        res.json(student); 
+    })
+    .catch(next); 
+})
+
+api.put('/students/update/:studentId', (req, res, next) => {
+    const id = req.params.studentId; 
+    Student.findById(id)
+        .then(student => student.update(req.body))
         .catch(next); 
 })
 

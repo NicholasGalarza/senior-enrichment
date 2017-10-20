@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import store from '../store';
-import {addNewCampus} from '../reducers';
+import {addNewStudent} from '../reducers';
 import { Route, Switch, Redirect, NavLink } from 'react-router-dom'; 
 
 
-class NewCampus extends Component {
+class NewStudent extends Component {
     constructor(props) {
-        super(props)
+        super(props); 
         this.state = {
             name: "",
-            image: "",
+            email: ""
         }
     }
     
@@ -19,21 +19,21 @@ class NewCampus extends Component {
 
         return (
             <div className="campus-form">
-                <h1>Add New Campus</h1>
-                <form onSubmit={(e) => handleSubmit(this.state.name, this.state.image, e)} id="new-campus-form">
+                <h1>Add New Student</h1>
+                <form onSubmit={(e) => handleSubmit(this.state.name, this.state.email, e)} id="new-campus-form">
                     <div>
                         <input
                             type="text"
                             name="name"
                             onChange={(e) => this.setState({name: e.target.value})}
                             value={this.state.name}
-                            placeholder="enter campus name..."
+                            placeholder="enter student name..."
                         />
                         <input type="text"
-                            name = "image"
-                            value={this.state.image}
-                            onChange={(e) => this.setState({image: e.target.value})}
-                            placeholder="insert image url..."
+                            name = "email"
+                            value={this.state.email}
+                            onChange={(e) => this.setState({email: e.target.value})}
+                            placeholder="insert email..."
                         />
                         <button type="submit">Add Campus</button>
                     </div>
@@ -45,16 +45,17 @@ class NewCampus extends Component {
 
 const mapStateToProps = function (state) {
     return {
-        newCampus: state.name, 
-        image: state.image
+        name: state.name, 
+        email: state.email
     };
 };
 
 const mapDispatchToProps = function (dispatch, ownProps) {
     return {
-        handleSubmit(newCampus, image, event) {
+        handleSubmit(name, email, event) {
+            console.log('from post', {name, email})
             event.preventDefault(); 
-            dispatch(addNewCampus({newCampus, image})); 
+            dispatch(addNewStudent({name, email})); 
         }
     };
 };
@@ -62,4 +63,4 @@ const mapDispatchToProps = function (dispatch, ownProps) {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(NewCampus); 
+)(NewStudent); 

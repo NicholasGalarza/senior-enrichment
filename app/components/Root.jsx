@@ -10,6 +10,7 @@ import Home from './Home'
 import Navbar from './Navbar'
 import Campus from './Campus'
 import UpdateCampus from './UpdateCampus'
+import UpdateStudent from './UpdateStudent'
 
 class Root extends Component {
 
@@ -28,7 +29,8 @@ class Root extends Component {
                     <Route exact path="/students" component={StudentList} />
                     <Route exact path="/students/:studentId" component={Student} />
                     <Route exact path="/campuses/:campusId" component={Campus} />
-                    <Route path="/campuses/update/:campusId" component={UpdateCampus} />
+                    <Route exact path="/campuses/update/:campusId" component={UpdateCampus} />
+                    <Route exact path="/students/update/:studentId" component={UpdateStudent} />
                 </Switch>
             </div>
         )

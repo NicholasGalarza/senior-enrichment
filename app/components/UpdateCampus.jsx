@@ -35,7 +35,7 @@ class UpdateCampus extends Component {
                             onChange={(e) => this.setState({image: e.target.value})}
                             placeholder="change image url..."
                         />
-                        <button type="submit">Add Campus</button>
+                        <button type="submit">Submit Changes</button>
                     </div>
                 </form>
             </div>

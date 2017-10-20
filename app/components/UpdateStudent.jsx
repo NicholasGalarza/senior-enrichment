@@ -1,41 +1,41 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import store from '../store';
-import {addNewCampus} from '../reducers';
+import {updateStudentData} from '../reducers';
 import { Route, Switch, Redirect, NavLink } from 'react-router-dom'; 
 
 
-class NewCampus extends Component {
+class UpdateStudent extends Component {
     constructor(props) {
         super(props)
         this.state = {
             name: "",
-            image: "",
+            email: ""
         }
     }
-    
-    render() {
-        const {handleChange, handleSubmit} = this.props; 
 
+    render() {
+        const { handleChange, handleSubmit} = this.props;
+       
         return (
-            <div className="campus-form">
-                <h1>Add New Campus</h1>
-                <form onSubmit={(e) => handleSubmit(this.state.name, this.state.image, e)} id="new-campus-form">
+            <div className="update-form">
+                <h1>Make Edits to Student</h1>
+                <form onSubmit={(e) => handleSubmit(this.state.name, this.state.email, e)} id="new-student-form">
                     <div>
                         <input
                             type="text"
                             name="name"
                             onChange={(e) => this.setState({name: e.target.value})}
                             value={this.state.name}
-                            placeholder="enter campus name..."
+                            placeholder="update student name..."
                         />
                         <input type="text"
-                            name = "image"
-                            value={this.state.image}
-                            onChange={(e) => this.setState({image: e.target.value})}
-                            placeholder="insert image url..."
+                            name = "email"
+                            value={this.state.email}
+                            onChange={(e) => this.setState({email: e.target.value})}
+                            placeholder="change student email..."
                         />
-                        <button type="submit">Add Campus</button>
+                        <button type="submit">Submit Changes</button>
                     </div>
                 </form>
             </div>
@@ -45,16 +45,18 @@ class NewCampus extends Component {
 
 const mapStateToProps = function (state) {
     return {
-        newCampus: state.name, 
-        image: state.image
+        name: state.name, 
+        email: state.email
     };
 };
 
 const mapDispatchToProps = function (dispatch, ownProps) {
+   
     return {
-        handleSubmit(newCampus, image, event) {
+        handleSubmit(name, email, event) {
             event.preventDefault(); 
-            dispatch(addNewCampus({newCampus, image})); 
+            const id = ownProps.match.params.studentId; 
+            dispatch(updateStudentData(id, {name, email})); 
         }
     };
 };
@@ -62,4 +64,4 @@ const mapDispatchToProps = function (dispatch, ownProps) {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(NewCampus); 
+)(UpdateStudent); 

@@ -24,7 +24,7 @@ class Student extends Component {
                 return student.campusId === campus.id; 
             })[0] : {}; 
         
-            console.log('values', student)
+
         return (
             <div>
                 <p>{student.id}</p>
