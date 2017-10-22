@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router'
 import store from '../store';
 import { addNewStudent } from '../reducers';
-import { Route, Switch, Redirect, NavLink } from 'react-router-dom';
+import { Route, Switch, NavLink } from 'react-router-dom';
 
 
 class NewStudent extends Component {
@@ -10,12 +11,11 @@ class NewStudent extends Component {
         super(props);
         this.state = {
             name: "",
-            email: "", 
-            campusId: ""
+            email: "",
+            campusId: "",
+            lauchRedirect: false
         }
     }
-
-
 
     render() {
         const { handleChange, handleSubmit } = this.props;
@@ -23,7 +23,7 @@ class NewStudent extends Component {
         return (
             <div className="addition-form">
                 <h1>Add New Student</h1>
-                <form onSubmit={(e) => handleSubmit(this.state.name, this.state.email, this.state.campusId, e)} id="new-campus-form">
+                <form onSubmit={(e) => { handleSubmit(this.state.name, this.state.email, this.state.campusId, e), this.setState({ lauchRedirect: true }) }} id="new-campus-form">
                     <div>
                         <input
                             type="text"
@@ -46,6 +46,9 @@ class NewStudent extends Component {
                         <button type="submit">Add Student</button>
                     </div>
                 </form>
+                {this.state.lauchRedirect && (
+                    <Redirect to={`/students`} />
+                )}
             </div>
         )
     }
@@ -63,7 +66,7 @@ const mapStateToProps = function (state) {
 const mapDispatchToProps = function (dispatch, ownProps) {
     return {
         handleSubmit(name, email, campusId, event) {
-            console.log('from post', { name, email, campusId , event })
+            console.log('from post', { name, email, campusId, event })
             event.preventDefault();
             dispatch(addNewStudent({ name, email, campusId }));
         }

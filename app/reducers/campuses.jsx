@@ -4,6 +4,7 @@ const GET_CAMPUSES = 'GET_CAMPUSES';
 const ADD_CAMPUS = 'ADD_CAMPUS';
 const UPDATE_CAMPUS = 'UPDATE_CAMPUS'; 
 const DELETE_CAMPUS = 'DELETE_CAMPUS'; 
+const UPDATE_DELETED_CAMPUSES = 'UPDATE_DELETED_CAMPUSES'; 
 
 //  action creator
 export function getCampuses(campuses) {
@@ -20,6 +21,10 @@ export function updateCampus(campus) {
 
 export function deleteCampus(campus) {
     return {type: DELETE_CAMPUS, campus}
+}
+
+export function updateDeletedCampuses(id) {
+    return {type: UPDATE_DELETED_CAMPUSES, id}
 }
 
 // thunk creator
@@ -61,7 +66,8 @@ export function updateCampusData(id, modifiedCampus) {
 
 export function deleteSelectedCampus(id) {
     return function thunk(dispatch) {
-        return axios.delete(`/api/campuses/${id}`); 
+        return axios.delete(`/api/campuses/${id}`)
+            .then(dispatch(updateDeletedCampuses(id))); 
     }
 }
 
@@ -78,6 +84,9 @@ export default function reducer(state = [], action) {
 
         case DELETE_CAMPUS: 
             return [...state]
+
+        case UPDATE_DELETED_CAMPUSES: 
+            return state.filter(campus => campus.id !== action.id)
 
         default:
             return state;

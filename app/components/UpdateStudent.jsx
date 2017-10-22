@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import store from '../store';
-import {updateStudentData} from '../reducers';
-import { Route, Switch, Redirect, NavLink } from 'react-router-dom'; 
+import { updateStudentData } from '../reducers';
+import { Route, Switch, NavLink } from 'react-router-dom';
+import { Redirect } from 'react-router'
 
 
 class UpdateStudent extends Component {
@@ -10,32 +11,38 @@ class UpdateStudent extends Component {
         super(props)
         this.state = {
             name: "",
-            email: "", 
-            campusId: ""
+            email: "",
+            campusId: "",
+            launchRedirect: false
         }
     }
 
+    validateEmail(email) {
+        const validator = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; 
+        return email.match(validator); 
+    }
+
     render() {
-        const { handleChange, handleSubmit} = this.props;
+        const { handleChange, handleSubmit } = this.props;
         return (
             <div className="update-form">
                 <h1>Make Edits to Student</h1>
-                <form onSubmit={(e) => handleSubmit(this.state.name, this.state.email, this.state.campusId, e)} id="new-student-form">
+                <form onSubmit={(e) => { handleSubmit(this.state.name, this.state.email, this.state.campusId, e), this.setState({ launchRedirect: true }) }} id="new-student-form">
                     <div>
                         <input
                             type="text"
                             name="name"
-                            onChange={(e) => this.setState({name: e.target.value})}
+                            onChange={(e) => this.setState({ name: e.target.value })}
                             value={this.state.name}
                             placeholder='name...'
                         />
                         <input type="text"
-                            name = "email"
+                            name="email"
                             value={this.state.email}
-                            onChange={(e) => this.setState({email: e.target.value})}
+                            onChange={(e) => this.setState({ email: e.target.value })}
                             placeholder="email..."
                         />
-                        <select  onClick={(e) => this.setState({campusId: e.target.value})}>
+                        <select onClick={(e) => this.setState({ campusId: e.target.value })}>
                             {this.props.campuses.map(campus => {
                                 return <option value={campus.id} key={campus.id}>{campus.name}</option>
                             })}
@@ -43,6 +50,9 @@ class UpdateStudent extends Component {
                         <button type="submit">Submit Changes</button>
                     </div>
                 </form>
+                {this.state.lauchRedirect && (
+                    <Redirect to={`/students`} />
+                )}
             </div>
         )
     }
@@ -58,12 +68,12 @@ const mapStateToProps = function (state) {
 };
 
 const mapDispatchToProps = function (dispatch, ownProps) {
-   
+
     return {
         handleSubmit(name, email, campusId, event) {
-            event.preventDefault(); 
-            const id = ownProps.match.params.studentId; 
-            dispatch(updateStudentData(id, {name, email, campusId})); 
+            event.preventDefault();
+            const id = ownProps.match.params.studentId;
+            dispatch(updateStudentData(id, { name, email, campusId }));
         }
     };
 };

@@ -11,7 +11,7 @@ const db = require('./db');
 const data = {
   student: [
     {
-      name: "John Doe",
+      name: "Roy Townsend",
       campus: {
         name: "New York University",
         image: "http://via.placeholder.com/350x350"
@@ -19,7 +19,7 @@ const data = {
       email: "me@mail.com"
     },
     {
-      name: "John Doe",
+      name: "Fernando	Ballard",
       campus: {
         name: "Boston University",
         image: "http://via.placeholder.com/350x350"
@@ -27,7 +27,7 @@ const data = {
       email: "me@mail.com"
     },
     {
-      name: "John Doe",
+      name: "Jill	Brady",
       campus: {
         name: "CUNY Hunter College",
         image: "http://via.placeholder.com/350x350"
@@ -35,7 +35,7 @@ const data = {
       email: "me@mail.com"
     },
     {
-      name: "John Doe",
+      name: "Gabriel Huffe",
       campus: {
         name: "Stony Brook University",
         image: "http://via.placeholder.com/350x350"
@@ -43,7 +43,7 @@ const data = {
       email: "me@mail.com"
     },
     {
-      name: "John Doe",
+      name: "Ada Frazier",
       campus: {
         name: "Vanderbuilt University",
         image: "http://via.placeholder.com/350x350"
@@ -51,7 +51,7 @@ const data = {
       email: "me@mail.com"
     },
     {
-      name: "John Doe",
+      name: "Jorge Pratt",
       campus: {
         name: "Oxford University",
         image: "http://via.placeholder.com/350x350"
@@ -59,7 +59,7 @@ const data = {
       email: "me@mail.com"
     },
     {
-      name: "John Doe",
+      name: "Monica	Perry",
       campus: {
         name: "Harvard University",
         image: "http://via.placeholder.com/350x350"
@@ -67,7 +67,7 @@ const data = {
       email: "me@mail.com"
     },
     {
-      name: "John Doe",
+      name: "Pearl Reyes",
       campus: {
         name: "Texas A&M University",
         image: "http://via.placeholder.com/350x350"
@@ -75,7 +75,7 @@ const data = {
       email: "me@mail.com"
     },
     {
-      name: "John Doe",
+      name: "Eugene	Wagner",
       campus: {
         name: "Binghamton University",
         image: "http://via.placeholder.com/350x350"
@@ -83,7 +83,7 @@ const data = {
       email: "me@mail.com"
     },
     {
-      name: "John Doe",
+      name: "Sara	Lawson",
       campus: {
         name: "Cornell University",
         image: "http://via.placeholder.com/350x350"
@@ -91,7 +91,7 @@ const data = {
       email: "me@mail.com"
     },
     {
-      name: "John Doe",
+      name: "Sammy Chandler",
       campus: {
         name: "University of California, Los Angeles",
         image: "http://via.placeholder.com/350x350"
@@ -99,7 +99,7 @@ const data = {
       email: "me@mail.com"
     },
     {
-      name: "John Doe",
+      name: "Peter Wright",
       campus: {
         name: "Loyola University",
         image: "http://via.placeholder.com/350x350"
@@ -107,7 +107,7 @@ const data = {
       email: "me@mail.com"
     },
     {
-      name: "John Doe",
+      name: "Lois	Farmer",
       campus: {
         name: "Hofstra University",
         image: "http://via.placeholder.com/350x350"
@@ -115,7 +115,7 @@ const data = {
       email: "me@mail.com"
     },
     {
-      name: "John Doe",
+      name: "Melissa Willis",
       campus: {
         name: "Standford University",
         image: "http://via.placeholder.com/350x350"

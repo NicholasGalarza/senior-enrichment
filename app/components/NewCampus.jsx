@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import store from '../store';
 import {addNewCampus} from '../reducers';
-import { Route, Switch, Redirect, NavLink } from 'react-router-dom'; 
+import { Route, Switch, NavLink } from 'react-router-dom'; 
+import { Redirect } from 'react-router'; 
 
 
 class NewCampus extends Component {
@@ -11,6 +12,7 @@ class NewCampus extends Component {
         this.state = {
             name: "",
             image: "",
+            lauchRedirect: false 
         }
     }
     
@@ -20,7 +22,7 @@ class NewCampus extends Component {
         return (
             <div className="addition-form">
                 <h1>Add New Campus</h1>
-                <form onSubmit={(e) => handleSubmit(this.state.name, this.state.image, e)} id="new-campus-form">
+                <form onSubmit={(e) => {handleSubmit(this.state.name, this.state.image, e), this.setState({lauchRedirect: true})}} id="new-campus-form">
                     <div>
                         <input
                             type="text"
@@ -38,6 +40,9 @@ class NewCampus extends Component {
                         <button type="submit">Add Campus</button>
                     </div>
                 </form>
+                {this.state.lauchRedirect && (
+                    <Redirect to={`/campuses`} />
+                )}
             </div>
         )
     }
