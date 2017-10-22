@@ -11,6 +11,8 @@ import Navbar from './Navbar'
 import Campus from './Campus'
 import UpdateCampus from './UpdateCampus'
 import UpdateStudent from './UpdateStudent'
+import NewStudent from './NewStudent'
+import NewCampus from './NewCampus'
 
 class Root extends Component {
 
@@ -27,6 +29,8 @@ class Root extends Component {
                     <Route exact path="/" component={Home} />
                     <Route exact path="/campuses" component={CampusList} />
                     <Route exact path="/students" component={StudentList} />
+                    <Route exact path="/students/add" component={NewStudent} />
+                    <Route exact path="/campuses/add" component={NewCampus} />
                     <Route exact path="/students/:studentId" component={Student} />
                     <Route exact path="/campuses/:campusId" component={Campus} />
                     <Route exact path="/campuses/update/:campusId" component={UpdateCampus} />

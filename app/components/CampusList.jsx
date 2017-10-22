@@ -20,8 +20,8 @@ class CampusList extends Component {
         const { campuses } = this.props;
         return (
             <div>
-                <NewCampus />
                 <h1>Campuses</h1>
+                <NavLink to={`/campuses/add`}>Add Campus</NavLink>
                 <ul>
                     {campuses.map(campus => {
                         return (

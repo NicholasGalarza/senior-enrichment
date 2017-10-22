@@ -10,31 +10,36 @@ class UpdateStudent extends Component {
         super(props)
         this.state = {
             name: "",
-            email: ""
+            email: "", 
+            campusId: ""
         }
     }
 
     render() {
         const { handleChange, handleSubmit} = this.props;
-       
         return (
             <div className="update-form">
                 <h1>Make Edits to Student</h1>
-                <form onSubmit={(e) => handleSubmit(this.state.name, this.state.email, e)} id="new-student-form">
+                <form onSubmit={(e) => handleSubmit(this.state.name, this.state.email, this.state.campusId, e)} id="new-student-form">
                     <div>
                         <input
                             type="text"
                             name="name"
                             onChange={(e) => this.setState({name: e.target.value})}
                             value={this.state.name}
-                            placeholder="update student name..."
+                            placeholder='name...'
                         />
                         <input type="text"
                             name = "email"
                             value={this.state.email}
                             onChange={(e) => this.setState({email: e.target.value})}
-                            placeholder="change student email..."
+                            placeholder="email..."
                         />
+                        <select value={this.state.campusId} onClick={(e) => this.setState({campusId: e.target.value})}>
+                            {this.props.campuses.map(campus => {
+                                return <option key={campus.id}>{campus.id}</option>
+                            })}
+                        </select>
                         <button type="submit">Submit Changes</button>
                     </div>
                 </form>
@@ -45,18 +50,20 @@ class UpdateStudent extends Component {
 
 const mapStateToProps = function (state) {
     return {
-        name: state.name, 
-        email: state.email
+        campuses: state.campuses,
+        name: state.name,
+        email: state.email,
+        campusId: state.campusId
     };
 };
 
 const mapDispatchToProps = function (dispatch, ownProps) {
    
     return {
-        handleSubmit(name, email, event) {
+        handleSubmit(name, email, campusId, event) {
             event.preventDefault(); 
             const id = ownProps.match.params.studentId; 
-            dispatch(updateStudentData(id, {name, email})); 
+            dispatch(updateStudentData(id, {name, email, campusId})); 
         }
     };
 };

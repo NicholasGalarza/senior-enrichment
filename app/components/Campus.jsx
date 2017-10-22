@@ -17,7 +17,7 @@ class Campus extends Component {
         })[0] : {}; 
         
         const studentsOnCampus = (students.length) ? students.filter(student => {
-            return student.id === Number(this.props.match.params.campusId);
+            return student.campusId === Number(this.props.match.params.campusId);
         }) : []; 
         
         return (

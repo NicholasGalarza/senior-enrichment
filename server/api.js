@@ -50,7 +50,7 @@ api.put('/campuses/update/:campusId', (req, res, next) => {
 })
 
 api.delete('/campuses/:campusId', (req, res, next) => {
-    console.log("HIIIIIIII, you are going to delete a db");
+    console.log("succesfully delete", req.body);
     const id = req.params.campusId;
     Campus.destroy({ where: { id } })
         .then(() => res.status(201).end())
@@ -58,6 +58,7 @@ api.delete('/campuses/:campusId', (req, res, next) => {
 })
 
 api.delete('/students/:studentId', (req, res, next) => {
+    console.log("succesfully delete", req.body);
     const id = req.params.studentId;
     Student.destroy({ where: { id } })
         .then(() => res.status(201).end())
@@ -65,11 +66,12 @@ api.delete('/students/:studentId', (req, res, next) => {
 })
 
 api.post('/students', (req, res, next) => {
-    console.log("Hit route for /students in server", req.body)
+    console.log("Attempting to add student from server", req.body)
     Student.findOrCreate({
         where: {
             name: req.body.name,
-            email: req.body.email
+            email: req.body.email, 
+            campusId: req.body.campusId
         }
     })
         .spread((student, bool) => {
@@ -79,6 +81,7 @@ api.post('/students', (req, res, next) => {
 })
 
 api.put('/students/update/:studentId', (req, res, next) => {
+    console.log('updating with this object', req.body); 
     const id = req.params.studentId;
     Student.findById(id)
         .then(student => student.update(req.body))

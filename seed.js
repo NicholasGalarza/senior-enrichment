@@ -13,7 +13,7 @@ const data = {
     {
       name: "John Doe",
       campus: {
-        name: "NY",
+        name: "New York University",
         image: "http://via.placeholder.com/350x350"
       },
       email: "me@mail.com"
@@ -21,7 +21,7 @@ const data = {
     {
       name: "John Doe",
       campus: {
-        name: "NY",
+        name: "Boston University",
         image: "http://via.placeholder.com/350x350"
       },
       email: "me@mail.com"
@@ -29,7 +29,7 @@ const data = {
     {
       name: "John Doe",
       campus: {
-        name: "NY",
+        name: "CUNY Hunter College",
         image: "http://via.placeholder.com/350x350"
       },
       email: "me@mail.com"
@@ -37,7 +37,7 @@ const data = {
     {
       name: "John Doe",
       campus: {
-        name: "NY",
+        name: "Stony Brook University",
         image: "http://via.placeholder.com/350x350"
       },
       email: "me@mail.com"
@@ -45,7 +45,7 @@ const data = {
     {
       name: "John Doe",
       campus: {
-        name: "NY",
+        name: "Vanderbuilt University",
         image: "http://via.placeholder.com/350x350"
       },
       email: "me@mail.com"
@@ -53,7 +53,7 @@ const data = {
     {
       name: "John Doe",
       campus: {
-        name: "NY",
+        name: "Oxford University",
         image: "http://via.placeholder.com/350x350"
       },
       email: "me@mail.com"
@@ -61,7 +61,7 @@ const data = {
     {
       name: "John Doe",
       campus: {
-        name: "NY",
+        name: "Harvard University",
         image: "http://via.placeholder.com/350x350"
       },
       email: "me@mail.com"
@@ -69,7 +69,7 @@ const data = {
     {
       name: "John Doe",
       campus: {
-        name: "NY",
+        name: "Texas A&M University",
         image: "http://via.placeholder.com/350x350"
       },
       email: "me@mail.com"
@@ -77,7 +77,7 @@ const data = {
     {
       name: "John Doe",
       campus: {
-        name: "NY",
+        name: "Binghamton University",
         image: "http://via.placeholder.com/350x350"
       },
       email: "me@mail.com"
@@ -85,7 +85,7 @@ const data = {
     {
       name: "John Doe",
       campus: {
-        name: "NY",
+        name: "Cornell University",
         image: "http://via.placeholder.com/350x350"
       },
       email: "me@mail.com"
@@ -93,7 +93,7 @@ const data = {
     {
       name: "John Doe",
       campus: {
-        name: "NY",
+        name: "University of California, Los Angeles",
         image: "http://via.placeholder.com/350x350"
       },
       email: "me@mail.com"
@@ -101,7 +101,7 @@ const data = {
     {
       name: "John Doe",
       campus: {
-        name: "NY",
+        name: "Loyola University",
         image: "http://via.placeholder.com/350x350"
       },
       email: "me@mail.com"
@@ -109,7 +109,7 @@ const data = {
     {
       name: "John Doe",
       campus: {
-        name: "NY",
+        name: "Loyola University",
         image: "http://via.placeholder.com/350x350"
       },
       email: "me@mail.com"
@@ -117,7 +117,7 @@ const data = {
     {
       name: "John Doe",
       campus: {
-        name: "NY",
+        name: "Standford University",
         image: "http://via.placeholder.com/350x350"
       },
       email: "me@mail.com"
@@ -125,7 +125,7 @@ const data = {
     {
       name: "John Doe",
       campus: {
-        name: "NY",
+        name: "University of Pennsylvania",
         image: "http://via.placeholder.com/350x350"
       },
       email: "me@mail.com"

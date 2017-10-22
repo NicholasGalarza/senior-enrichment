@@ -18,7 +18,7 @@ class NewCampus extends Component {
         const {handleChange, handleSubmit} = this.props; 
 
         return (
-            <div className="campus-form">
+            <div className="addition-form">
                 <h1>Add New Campus</h1>
                 <form onSubmit={(e) => handleSubmit(this.state.name, this.state.image, e)} id="new-campus-form">
                     <div>

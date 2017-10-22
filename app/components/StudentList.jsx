@@ -19,8 +19,8 @@ class StudentList extends Component {
         const { students } = this.props;
         return (
             <div>
-                <NewStudent />
                 <h1>Student List</h1>
+                <NavLink to={`/students/add`}>Add Student</NavLink>
                 <ul>
                     {students.map((student) =>
                         <li key={student.id}>
