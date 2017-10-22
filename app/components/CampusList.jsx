@@ -45,7 +45,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = function (dispatch, ownProps) {
     return {
         deleteCampus(id) {
+            console.log("Dispatching to thunk", id); 
             dispatch(deleteSelectedCampus(id))
+                .then(console.log("Dispatch resolved")); 
         }
     }
 };

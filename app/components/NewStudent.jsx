@@ -15,6 +15,8 @@ class NewStudent extends Component {
         }
     }
 
+
+
     render() {
         const { handleChange, handleSubmit } = this.props;
 
@@ -36,9 +38,9 @@ class NewStudent extends Component {
                             onChange={(e) => this.setState({ email: e.target.value })}
                             placeholder="insert email..."
                         />
-                        <select value={this.state.campusId} onChange={(e) => this.setState({ campusId: e.target.value })}>
+                        <select onChange={(e) => this.setState({ campusId: e.target.value })}>
                             {this.props.campuses.map(campus => {
-                                return <option key={campus.id}>{campus.id}</option>
+                                return <option value={campus.id} key={campus.id}>{campus.name}</option>
                             })}
                         </select>
                         <button type="submit">Add Student</button>

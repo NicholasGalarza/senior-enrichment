@@ -109,7 +109,7 @@ const data = {
     {
       name: "John Doe",
       campus: {
-        name: "Loyola University",
+        name: "Hofstra University",
         image: "http://via.placeholder.com/350x350"
       },
       email: "me@mail.com"

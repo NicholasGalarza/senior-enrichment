@@ -35,9 +35,9 @@ class UpdateStudent extends Component {
                             onChange={(e) => this.setState({email: e.target.value})}
                             placeholder="email..."
                         />
-                        <select value={this.state.campusId} onClick={(e) => this.setState({campusId: e.target.value})}>
+                        <select  onClick={(e) => this.setState({campusId: e.target.value})}>
                             {this.props.campuses.map(campus => {
-                                return <option key={campus.id}>{campus.id}</option>
+                                return <option value={campus.id} key={campus.id}>{campus.name}</option>
                             })}
                         </select>
                         <button type="submit">Submit Changes</button>

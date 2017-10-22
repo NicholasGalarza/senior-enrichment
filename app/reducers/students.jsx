@@ -79,6 +79,7 @@ export default function reducer(state = [], action) {
             return [...state, action.student];
 
         case DELETE_STUDENT: 
+            console.log(state); 
             return [...state]; 
         default:
             return state;
