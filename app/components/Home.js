@@ -3,8 +3,8 @@ import Navbar from './Navbar'
 
 export default function Home() {
     return (
-        <div>
-            <h1>HELLO WORLD</h1>
+        <div className="landing">
+            <h1>Website Under Construction</h1>
         </div>
     )
 }

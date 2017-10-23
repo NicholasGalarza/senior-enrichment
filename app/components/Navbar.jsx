@@ -5,11 +5,12 @@ import CampusList from './CampusList'
 import StudentList from './StudentList'
 
 
+
 export default function Navbar() {
     return (
         <div className="navbar">
+            <h3 id="title">Margaret Hamilton <br />Interplanetary <br />Academy of JavaScript</h3>
             <div className="buttons-group">
-                <h3>Navbar Place Holder</h3>
                 <NavLink to='/'>Home</NavLink>
                 <NavLink to="/students">Students</NavLink>
                 <NavLink to="/campuses">Campuses</NavLink>

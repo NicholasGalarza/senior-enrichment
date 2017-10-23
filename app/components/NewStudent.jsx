@@ -12,7 +12,7 @@ class NewStudent extends Component {
         this.state = {
             name: "",
             email: "",
-            campusId: "",
+            campusId: 1,
             lauchRedirect: false
         }
     }

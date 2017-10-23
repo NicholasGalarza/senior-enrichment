@@ -12,7 +12,7 @@ class UpdateStudent extends Component {
         this.state = {
             name: "",
             email: "",
-            campusId: "",
+            campusId: 1,
             launchRedirect: false
         }
     }
@@ -34,13 +34,13 @@ class UpdateStudent extends Component {
                             name="name"
                             onChange={(e) => this.setState({ name: e.target.value })}
                             value={this.state.name}
-                            placeholder='name...'
+                            placeholder={this.props.name}
                         />
                         <input type="text"
                             name="email"
                             value={this.state.email}
                             onChange={(e) => this.setState({ email: e.target.value })}
-                            placeholder="email..."
+                            placeholder={this.props.email}
                         />
                         <select onClick={(e) => this.setState({ campusId: e.target.value })}>
                             {this.props.campuses.map(campus => {
