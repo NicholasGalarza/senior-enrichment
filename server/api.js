@@ -64,7 +64,7 @@ api.delete('/students/:studentId', (req, res, next) => {
     Student.destroy({ where: { id } })
         .then(() => res.status(201).end())
         .catch(next);
-})
+}) 
 
 api.post('/students', (req, res, next) => {
     console.log("Attempting to add student from server", req.body)
