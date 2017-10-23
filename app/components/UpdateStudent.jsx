@@ -24,9 +24,11 @@ class UpdateStudent extends Component {
 
     render() {
         const { handleChange, handleSubmit } = this.props;
+        console.log(this.props)
+        const student = this.props.student || ""
         return (
             <div className="update-form">
-                <h1>Make Edits to Student</h1>
+                <h1>Make Edits to {student.name}</h1>
                 <form onSubmit={(e) => { handleSubmit(this.state.name, this.state.email, this.state.campusId, e), this.setState({ launchRedirect: true }) }} id="new-student-form">
                     <div>
                         <input
@@ -34,13 +36,13 @@ class UpdateStudent extends Component {
                             name="name"
                             onChange={(e) => this.setState({ name: e.target.value })}
                             value={this.state.name}
-                            placeholder={this.props.name}
+                            placeholder={student.name}
                         />
                         <input type="text"
                             name="email"
                             value={this.state.email}
                             onChange={(e) => this.setState({ email: e.target.value })}
-                            placeholder={this.props.email}
+                            placeholder={student.email}
                         />
                         <select onClick={(e) => this.setState({ campusId: e.target.value })}>
                             {this.props.campuses.map(campus => {
