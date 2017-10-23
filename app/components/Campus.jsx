@@ -6,20 +6,20 @@ import store from '../store'
 class Campus extends Component {
 
     constructor(props) {
-        super(props); 
+        super(props);
     }
 
     render() {
-        const {students, campuses} = this.props; 
+        const { students, campuses } = this.props;
 
         const campus = (campuses.length) ? campuses.filter(campus => {
             return campus.id === Number(this.props.match.params.campusId);
-        })[0] : {}; 
-        
+        })[0] : {};
+
         const studentsOnCampus = (students.length) ? students.filter(student => {
             return student.campusId === Number(this.props.match.params.campusId);
-        }) : []; 
-        console.log('heeeeey', campus); 
+        }) : [];
+        console.log('heeeeey', campus);
         return (
             <div>
                 <p>{campus && campus.id}</p>
@@ -27,12 +27,12 @@ class Campus extends Component {
                 <img src={campus && campus.image}></img>
                 <p>Students</p>
                 <ul>
-                {studentsOnCampus.map(student => {
-                    return <NavLink to={`/students/${student.id}`} key={student.id}>{student.name}</NavLink>
-                })}
+                    {studentsOnCampus.map(student => {
+                        return <li key={student.id}><NavLink to={`/students/${student.id}`} key={student.id}>{student.name}</NavLink></li>
+                    })}
                 </ul>
             </div>
-        ); 
+        );
     }
 }
 

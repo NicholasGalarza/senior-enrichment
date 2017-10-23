@@ -17,7 +17,6 @@ class StudentList extends Component {
 
     render() {
         const { students } = this.props;
-        console.log("STUDENTS FROM LIST", students); 
         return (
             <div>
                 <h1>Student List</h1>
