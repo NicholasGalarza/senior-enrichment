@@ -5,6 +5,8 @@ const ADD_STUDENT = 'ADD_STUDENT';
 const UPDATE_STUDENT = 'UPDATE_STUDENT'; 
 const DELETE_STUDENT = 'DELETE_STUDENT'; 
 const UPDATE_DELETED_STUDENTS = 'UPDATE_DELETED_STUDENTS'; 
+const REMOVE_STUDENTS_FROM_CAMPUS = 'REMOVE_STUDENTS_FROM_CAMPUS'; 
+
 
 //  action creator
 export function getStudents(students) {
@@ -20,11 +22,15 @@ export function updateStudent(student) {
 }
 
 export function deleteStudent(student) {
-    return {type: DELETE_STUDENT, student}; 
+    return {type: DELETE_STUDENT, student} 
 }
 
 export function updateDeletedStudent(id) {
     return {type: UPDATE_DELETED_STUDENTS, id}
+}
+
+export function removeStudentsFromCampus(id) {
+    return {type: REMOVE_STUDENTS_FROM_CAMPUS, id}
 }
 
 // thunk creator
@@ -71,6 +77,7 @@ export function deleteSelectedStudent(id) {
     }
 }
 
+
 // reducer
 export default function reducer(state = [], action) {
     switch (action.type) {
@@ -90,6 +97,9 @@ export default function reducer(state = [], action) {
 
         case UPDATE_DELETED_STUDENTS: 
             return state.filter(student => student.id !== action.id)
+
+        case REMOVE_STUDENTS_FROM_CAMPUS: 
+            return state.filter(student => student.campusId !== action.id)
         default:
             return state;
     }

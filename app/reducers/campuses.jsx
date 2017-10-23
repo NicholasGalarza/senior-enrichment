@@ -1,10 +1,13 @@
 import axios from 'axios'; 
+import {removeStudentsFromCampus} from './students'
+
 // action type
 const GET_CAMPUSES = 'GET_CAMPUSES';
 const ADD_CAMPUS = 'ADD_CAMPUS';
 const UPDATE_CAMPUS = 'UPDATE_CAMPUS'; 
 const DELETE_CAMPUS = 'DELETE_CAMPUS'; 
 const UPDATE_DELETED_CAMPUSES = 'UPDATE_DELETED_CAMPUSES'; 
+
 
 //  action creator
 export function getCampuses(campuses) {
@@ -26,6 +29,8 @@ export function deleteCampus(campus) {
 export function updateDeletedCampuses(id) {
     return {type: UPDATE_DELETED_CAMPUSES, id}
 }
+
+
 
 // thunk creator
 export function fetchCampuses() {
@@ -67,7 +72,8 @@ export function updateCampusData(id, modifiedCampus) {
 export function deleteSelectedCampus(id) {
     return function thunk(dispatch) {
         return axios.delete(`/api/campuses/${id}`)
-            .then(dispatch(updateDeletedCampuses(id))); 
+            .then(dispatch(updateDeletedCampuses(id)))
+            .then(dispatch(removeStudentsFromCampus(id))); 
     }
 }
 
