@@ -12,7 +12,7 @@ class UpdateStudent extends Component {
         this.state = {
             name: "",
             email: "",
-            campusId: 1,
+            campusId: "",
             launchRedirect: false
         }
     }
@@ -24,12 +24,14 @@ class UpdateStudent extends Component {
 
     render() {
         const { handleChange, handleSubmit } = this.props;
-        console.log(this.props)
+        const defaultValue = this.props.campuses.length ? this.props.campuses[0].id : "";
+        
         const student = this.props.student || ""
+        console.log('MY STATE', this.state)
         return (
             <div className="update-form">
                 <h1>Make Edits to {student.name}</h1>
-                <form onSubmit={(e) => { handleSubmit(this.state.name, this.state.email, this.state.campusId, e), this.setState({ launchRedirect: true }) }} id="new-student-form">
+                <form onSubmit={(e) => { handleSubmit(this.state.name, this.state.email, this.state.campusId || defaultValue, e), this.setState({ launchRedirect: true }) }} id="new-student-form">
                     <div>
                         <input
                             type="text"
@@ -44,8 +46,8 @@ class UpdateStudent extends Component {
                             onChange={(e) => this.setState({ email: e.target.value })}
                             placeholder={student.email}
                         />
-                        <select onClick={(e) => this.setState({ campusId: e.target.value })}>
-                            {this.props.campuses.map(campus => {
+                        <select defaultValue={defaultValue} onChange={(e) => this.setState({campusId: e.target.value || defaultValue })}>
+                            {this.props.campuses.map((campus) => {
                                 return <option value={campus.id} key={campus.id}>{campus.name}</option>
                             })}
                         </select>
@@ -74,7 +76,8 @@ const mapDispatchToProps = function (dispatch, ownProps) {
     return {
         handleSubmit(name, email, campusId, event) {
             event.preventDefault();
-            const id = ownProps.match.params.studentId;
+            console.log("PROPS FROM DISPATCH", ownProps); 
+            const id = ownProps.id;
             dispatch(updateStudentData(id, { name, email, campusId }));
         }
     };

@@ -24,14 +24,15 @@ class Root extends Component {
     }
 
     getStudent(id) {
-        return this.props.students.find(student => student.id = id); 
+        return this.props.students.find(student => student.id === +id);
     }
 
     render() {
-        console.log('PROPS MAIN', this.props); 
+        console.log('PROPS MAIN', this.props);
+
         return (
             <div>
-                <Navbar/>
+                <Navbar />
                 {/* <Route exact path="/conceptions/:id" render={({ match }) => <Conception match={match} {...this.props} />}/> */}
                 <div className="container">
                     <Switch>
@@ -43,9 +44,13 @@ class Root extends Component {
                         <Route exact path="/students/:studentId" component={Student} />
                         <Route exact path="/campuses/:campusId" component={Campus} />
                         <Route exact path="/campuses/update/:campusId" component={UpdateCampus} />
-                        {/* <Route exact path="/students/update/:studentId" component={UpdateStudent} /> */}
-                        {/* https://reacttraining.com/react-router/web/api/match */}
-                        <Route exact path="/students/update/:studentId" render={({ match }) => <UpdateStudent student={this.getStudent(match.params.studentId)} match={match} {...this.props} />}/>
+                        <Route exact path="/students/update/:studentId"
+                            render={({ match }) => (
+                                <UpdateStudent
+                                    student={this.getStudent(match.params.studentId)}
+                                    match={match} {...this.props}
+                                    id={match.params.studentId} />
+                            )} />
                     </Switch>
                 </div>
             </div>
@@ -54,7 +59,7 @@ class Root extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return {students: state.students}; 
+    return { students: state.students };
 }
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -68,3 +73,5 @@ export default withRouter(connect(
     mapDispatchToProps
 )(Root));
 
+// {/* <Route exact path="/students/update/:studentId" component={UpdateStudent} /> */}
+// {/* https://reacttraining.com/react-router/web/api/match */}
