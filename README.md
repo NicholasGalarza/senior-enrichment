@@ -53,10 +53,10 @@ Use at least sequelize, express, react, and redux when creating this app. You ca
 - Actions: as a user I...
   * can create a campus                                                                           COMPLETE
   * can edit a campus's info, including adding/removing a student to/from that campus             COMPLETE
-  * can delete a campus
-  * can create a student
-  * can edit a student's info, including the campus that student is assigned to
-  * can delete a student
+  * can delete a campus                                                                           COMPLETE
+  * can create a student                                                                          COMPLETE
+  * can edit a student's info, including the campus that student is assigned to                   COMPLETE
+  * can delete a student                                                                          COMPLETE
 
 ### Routes
 

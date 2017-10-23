@@ -18,7 +18,7 @@ class NewStudent extends Component {
     }
 
     render() {
-        const { handleChange, handleSubmit } = this.props;
+        const { handleSubmit } = this.props;
 
         return (
             <div className="addition-form">
@@ -66,7 +66,6 @@ const mapStateToProps = function (state) {
 const mapDispatchToProps = function (dispatch, ownProps) {
     return {
         handleSubmit(name, email, campusId, event) {
-            console.log('from post', { name, email, campusId, event })
             event.preventDefault();
             dispatch(addNewStudent({ name, email, campusId }));
         }

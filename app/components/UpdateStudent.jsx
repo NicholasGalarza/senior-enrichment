@@ -23,11 +23,10 @@ class UpdateStudent extends Component {
     }
 
     render() {
-        const { handleChange, handleSubmit } = this.props;
+        const { handleSubmit } = this.props;
         const defaultValue = this.props.campuses.length ? this.props.campuses[0].id : "";
         
         const student = this.props.student || ""
-        console.log('MY STATE', this.state)
         return (
             <div className="update-form">
                 <h1>Make Edits to {student.name}</h1>
@@ -72,12 +71,11 @@ const mapStateToProps = function (state) {
 };
 
 const mapDispatchToProps = function (dispatch, ownProps) {
-
     return {
         handleSubmit(name, email, campusId, event) {
             event.preventDefault();
-            console.log("PROPS FROM DISPATCH", ownProps); 
             const id = ownProps.id;
+            console.log('calling update', name)
             dispatch(updateStudentData(id, { name, email, campusId }));
         }
     };

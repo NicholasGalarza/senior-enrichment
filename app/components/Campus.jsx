@@ -19,11 +19,12 @@ class Campus extends Component {
         const studentsOnCampus = (students.length) ? students.filter(student => {
             return student.campusId === Number(this.props.match.params.campusId);
         }) : []; 
-        
+        console.log('heeeeey', campus); 
         return (
             <div>
                 <p>{campus && campus.id}</p>
                 <p>{campus && campus.name}</p>
+                <img src={campus && campus.image}></img>
                 <p>Students</p>
                 <ul>
                 {studentsOnCampus.map(student => {
@@ -39,10 +40,6 @@ const mapStateToProps = (state) => ({
     students: state.students,
     campuses: state.campuses
 });
-
-// const mapDispatchToProps = () {
-//     return {}
-// }
 
 export default connect(
     mapStateToProps

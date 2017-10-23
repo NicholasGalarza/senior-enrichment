@@ -46,6 +46,7 @@ api.put('/campuses/update/:campusId', (req, res, next) => {
     const id = req.params.campusId;
     Campus.findById(id)
         .then(campus => campus.update(req.body))
+        .then(updatedCampus => res.send(updatedCampus))
         .catch(next);
 })
 
@@ -85,6 +86,7 @@ api.put('/students/update/:studentId', (req, res, next) => {
     const id = req.params.studentId;
     Student.findById(id)
         .then(student => student.update(req.body))
+        .then(updatedStudent => res.send(updatedStudent))
         .catch(next);
 })
 

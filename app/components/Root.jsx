@@ -28,8 +28,6 @@ class Root extends Component {
     }
 
     render() {
-        console.log('PROPS MAIN', this.props);
-
         return (
             <div>
                 <Navbar />

@@ -13,9 +13,9 @@ class CampusList extends Component {
     }
 
     handleClick(id) {
-        console.log('this fired off', id); 
         this.props.deleteCampus(id)
     }
+
     render() {
         const { campuses } = this.props;
         return (
