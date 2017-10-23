@@ -5,8 +5,6 @@ import { updateCampusData } from '../reducers';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import { Redirect } from 'react-router';
 
-
-
 class UpdateCampus extends Component {
     constructor(props) {
         super(props)
@@ -18,10 +16,12 @@ class UpdateCampus extends Component {
     }
 
     render() {
-        const { handleChange, handleSubmit } = this.props;
+        const { handleSubmit } = this.props;
+        const campus = this.props.campus || ""; 
+    
         return (
             <div className="campus-form">
-                <h1>Make Edits to Campus</h1>
+                <h1>Make Edits to {campus.name}</h1>
                 <form onSubmit={(e) => { handleSubmit(this.state.name, this.state.image, e), this.setState({ launchRedirect: true }) }} id="new-campus-form">
                     <div>
                         <input
@@ -29,7 +29,7 @@ class UpdateCampus extends Component {
                             name="name"
                             onChange={(e) => this.setState({ name: e.target.value })}
                             value={this.state.name}
-                            placeholder="update campus name..."
+                            placeholder={campus.name}
                         />
                         <input type="text"
                             name="image"
@@ -51,7 +51,8 @@ class UpdateCampus extends Component {
 const mapStateToProps = function (state) {
     return {
         name: state.name,
-        image: state.image
+        image: state.image, 
+        campusId: state.campusId
     };
 };
 
@@ -60,7 +61,7 @@ const mapDispatchToProps = function (dispatch, ownProps) {
     return {
         handleSubmit(name, image, event) {
             event.preventDefault();
-            const id = ownProps.match.params.campusId;
+            const id = ownProps.id; 
             dispatch(updateCampusData(id, { name, image }));
         }
     };

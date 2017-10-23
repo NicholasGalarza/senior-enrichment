@@ -75,7 +75,6 @@ const mapDispatchToProps = function (dispatch, ownProps) {
         handleSubmit(name, email, campusId, event) {
             event.preventDefault();
             const id = ownProps.id;
-            console.log('calling update', name)
             dispatch(updateStudentData(id, { name, email, campusId }));
         }
     };

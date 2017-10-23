@@ -27,6 +27,10 @@ class Root extends Component {
         return this.props.students.find(student => student.id === +id);
     }
 
+    getCampus(id) {
+        return this.props.campuses.find(campus => campus.id === +id);
+    }
+
     render() {
         return (
             <div>
@@ -41,7 +45,13 @@ class Root extends Component {
                         <Route exact path="/campuses/add" component={NewCampus} />
                         <Route exact path="/students/:studentId" component={Student} />
                         <Route exact path="/campuses/:campusId" component={Campus} />
-                        <Route exact path="/campuses/update/:campusId" component={UpdateCampus} />
+                        <Route exact path="/campuses/update/:campusId"
+                            render={({ match }) => (
+                                <UpdateCampus
+                                    campus={this.getCampus(match.params.campusId)}
+                                    match={match} {...this.props}
+                                    id={match.params.campusId} />
+                            )} />
                         <Route exact path="/students/update/:studentId"
                             render={({ match }) => (
                                 <UpdateStudent
@@ -57,7 +67,10 @@ class Root extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return { students: state.students };
+    return {
+        students: state.students,
+        campuses: state.campuses
+    };
 }
 const mapDispatchToProps = (dispatch) => {
     return {
